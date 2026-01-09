@@ -1,0 +1,31 @@
+{
+  "name": "birthday-story",
+  "version": "1.0.0",
+  "description": "A simple and interactive birthday surprise website with animations, music, and heartfelt storytelling.",
+  "private": true,
+  "scripts": {
+    "start": "http-server -p 8081",
+    "dev": "http-server -p 8081 -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Priyanshu9369/birthday-story.git"
+  },
+  "keywords": [
+    "birthday",
+    "birthday-surprise",
+    "happy-birthday",
+    "interactive-website",
+    "celebration",
+    "html-css-javascript"
+  ],
+  "author": "Priyanshu Yadav",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Priyanshu9369/birthday-story/issues"
+  },
+  "homepage": "https://priyanshu9369.github.io/birthday-story/",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
