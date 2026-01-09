@@ -1,0 +1,197 @@
+////////////////////////////////////////////
+// VARIABLES
+////////////////////////////////////////////
+
+// Diameter of the cake (controls overall size)
+@D: 300px;
+
+////////////////////////////////////////////
+
+
+/* ==============================================
+   CAKE CONTAINER POSITION
+   ============================================== */
+
+.cake {
+  position: absolute;        // Absolute positioning for animation
+  display: none;             // Hidden initially (shown via JS)
+  left: 50%;                 // Center horizontally
+  margin-left: -(@D / 2);    // Offset to perfectly center
+  width: @D;
+  height: @D;
+}
+
+/* ==============================================
+   CAKE BASE (PLATE)
+   ============================================== */
+
+.cake:after {
+  background: rgba(255, 255, 255, 1); // White base plate
+  border-radius: @D;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: @D;
+  height: @D / 50;
+}
+
+/* ==============================================
+   CANDLE BODY
+   ============================================== */
+
+.velas {
+  background: rgba(255, 255, 255, 1); // Candle color
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -(@D / 2) / 20;
+  margin-top: -(@D / 2) / 6;
+  width: @D / 20;
+  height: @D / 6;
+}
+
+/* Candle stripes */
+.velas:after,
+.velas:before {
+  background: rgba(255, 0, 0, 0.4);   // Red stripes
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: @D / 45;
+}
+
+.velas:after {
+  top: 25%;
+}
+
+.velas:before {
+  top: 45%;
+}
+
+/* ==============================================
+   FIRE / FLAME
+   ============================================== */
+
+.fuego {
+  display: none;             // Hidden until candle is lit
+  border-radius: 100%;
+  box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  margin-left: -(@D / 2) / 15;
+  width: @D / 15;
+  height: @D / 8;
+}
+
+/* Different animation speeds for natural flame effect */
+.fuego:nth-child(1) { animation: fuego 2s infinite; }
+.fuego:nth-child(2) { animation: fuego 1.5s infinite; }
+.fuego:nth-child(3) { animation: fuego 1s infinite; }
+.fuego:nth-child(4) { animation: fuego 0.5s infinite; }
+.fuego:nth-child(5) { animation: fuego 0.2s infinite; }
+
+/* ==============================================
+   FIRE ANIMATION KEYFRAMES
+   ============================================== */
+
+@keyframes fuego {
+  0% {
+    background: rgba(254, 248, 97, 0.5);  // Yellow flame
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.1);   // Red flame fade
+    transform: translateY(-(@D / 5)) scale(0);
+  }
+  100% {
+    background: rgba(254, 248, 97, 0.5);
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==============================================
+   FROSTING (TOP LAYER)
+   ============================================== */
+
+.cobertura {
+  background: rgba(236, 231, 227, 1); // Cream color
+  border-radius: @D / 2;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  margin-left: -(@D / 2) / 1.8;
+  margin-top: -(@D / 2) / 10;
+  width: @D / 1.8;
+  height: @D / 8;
+  z-index: 10;
+}
+
+/* Frosting drips */
+.cobertura:after,
+.cobertura:before {
+  background: rgba(236, 231, 227, 1);
+  border-radius: @D;
+  content: "";
+  position: absolute;
+  width: @D / 20;
+  height: @D / 10;
+}
+
+.cobertura:after {
+  top: @D / 15;
+  right: @D / 7;
+}
+
+.cobertura:before {
+  top: @D / 10;
+  right: @D / 11;
+}
+
+/* ==============================================
+   CAKE BODY (SPONGE)
+   ============================================== */
+
+.bizcocho {
+  background: rgba(109, 56, 38, 1); // Chocolate cake color
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -(@D / 2) / 2;
+  width: @D / 2;
+  height: @D / 3;
+}
+
+/* Cake layers */
+.bizcocho:after,
+.bizcocho:before {
+  background: rgba(236, 231, 227, 0.6);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: @D / 20;
+}
+
+.bizcocho:after {
+  top: 30%;
+}
+
+.bizcocho:before {
+  top: 60%;
+}
+
+/* ==============================================
+   TEXT STYLING
+   ============================================== */
+
+h1,
+p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  width: 100%;
+  user-select: none; // Prevent text selection
+}
