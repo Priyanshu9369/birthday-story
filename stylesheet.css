@@ -1,0 +1,88 @@
+/* =====================================================
+   ABSOLUTE CENTER LOADING SPINNER
+   ===================================================== */
+
+/* Main loading container (centered on screen) */
+.loading {
+  position: fixed;          /* Fix spinner to viewport */
+  z-index: 99999;           /* Ensure it stays above all elements */
+  height: 2em;
+  width: 2em;
+  margin: auto;             /* Auto margin for centering */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* =====================================================
+   BACKGROUND OVERLAY
+   ===================================================== */
+
+/* Semi-transparent overlay covering full screen */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Dark transparent background */
+}
+
+/* =====================================================
+   ACCESSIBILITY & FALLBACK HANDLING
+   ===================================================== */
+
+/* Hide loading text in modern browsers */
+.loading:not(:required) {
+  font: 0/0 a;              /* Hide text visually */
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+/* =====================================================
+   SPINNER VISUAL (DOTS)
+   ===================================================== */
+
+/* Circular spinner created using box-shadow dots */
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  border-radius: 0.5em;
+
+  /* Spinner rotation animation */
+  animation: spinner 1500ms infinite linear;
+
+  /* Dots around the spinner */
+  box-shadow:
+    #FFF 1.5em 0 0 0,
+    rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0,
+    rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
+    #FFF -1.1em 1.1em 0 0,
+    rgba(0, 0, 0, 0.5) -1.5em 0 0 0,
+    rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0,
+    rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
+    rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* =====================================================
+   SPINNER ANIMATION
+   ===================================================== */
+
+/* Standard rotation animation */
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);    /* Start position */
+  }
+  100% {
+    transform: rotate(360deg);  /* Full rotation */
+  }
+}
